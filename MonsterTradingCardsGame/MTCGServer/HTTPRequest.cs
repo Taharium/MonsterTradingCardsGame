@@ -50,7 +50,12 @@ public class HTTPRequest {
         Method = (HTTPMethod)Enum.Parse(typeof(HTTPMethod), firstLineParts?[0] ?? "GET");
         string[] pathAndQuery = firstLineParts?[1].Split('?') ?? Array.Empty<string>();
         Path = pathAndQuery[0].Split('/', StringSplitOptions.RemoveEmptyEntries);
-
+        
+        
+        if (Path.Length == 2 && Path[1] == "tradings") {
+            Console.WriteLine();
+        }
+        
         if (pathAndQuery.Length > 1) {
             string[] queryParams = pathAndQuery[1].Split('&');
             foreach (var queryParam in queryParams) {

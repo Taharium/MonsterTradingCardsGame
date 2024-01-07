@@ -14,9 +14,8 @@ public class ScoreboardHandling : IHTTPEndpoint{
             try {
                 var username = AuthToken.ParseTokenForUsername(rq.Headers["Authorization"]);
                 unit.SessionRepository.CheckToken(username);
-                var stats = unit.UserRepository.GetScoreboard();
-                var body = JsonSerializer.Serialize(stats);
-                rs.Prepare(HttpStatusCode.OK, body, MediaTypeNames.Application.Json);
+                var stats = unit.UserRepository.GetScoreboard().Beautify();
+                rs.Prepare(HttpStatusCode.OK, stats, MediaTypeNames.Application.Json);
                 unit.Commit();
             }
             catch (ProcessException e) {

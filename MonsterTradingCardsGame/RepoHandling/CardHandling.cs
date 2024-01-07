@@ -15,10 +15,8 @@ internal class CardHandling : IHTTPEndpoint {
                     throw new ProcessException(HttpStatusCode.BadRequest, "Access token is missing or invalid\n");
                 var username = AuthToken.ParseTokenForUsername(rq.Headers["Authorization"]);
                 unit.SessionRepository.CheckToken(username);
-                
-                var stack = unit.StackRepository.GetCardsFromStack(username);
-                var body = JsonExtension.Beautify(stack);
-                rs.Prepare(HttpStatusCode.OK, body, MediaTypeNames.Application.Json);
+                var stack = unit.StackRepository.GetCardsFromStack(username).Beautify();
+                rs.Prepare(HttpStatusCode.OK, stack, MediaTypeNames.Application.Json);
                 unit.Commit();
             }
             catch (ProcessException e) {

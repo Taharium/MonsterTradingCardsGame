@@ -4,6 +4,8 @@ using System.Net;
 using System.Net.Mime;
 using MonsterTradingCardsGame.DTOs;
 using System.Text.Json;
+using MonsterTradingCardsGame.Extensions;
+
 namespace MonsterTradingCardsGame.RepoHandling;
 
 public class UserHandling : IHTTPEndpoint {
@@ -29,7 +31,7 @@ public class UserHandling : IHTTPEndpoint {
             try {
                 unit.SessionRepository.CheckTokenInHeader(rq);
                 UserDataDTO user = unit.UserRepository.GetUserByUsername(rq);
-                var body = JsonSerializer.Serialize(user) ?? throw new ProcessException(HttpStatusCode.InternalServerError, "");
+                var body = user.Beautify();
                 rs.Prepare(HttpStatusCode.OK, body, MediaTypeNames.Application.Json);
                 unit.Commit();
             }

@@ -41,8 +41,11 @@ public class BattleRepository {
                 Username2 = reader.GetString(reader.GetOrdinal("enemy")),
                 Status1 = reader.GetBoolean(reader.GetOrdinal("status1")),
                 Status2 = reader.GetBoolean(reader.GetOrdinal("status2")),
-                BattleLog = reader.GetString(reader.GetOrdinal("battlelog"))
+                BattleLogShort = reader.GetString(reader.GetOrdinal("battlelog"))
             });
+        }
+        foreach (var battle in history) {
+            battle.SetHistory();
         }
         return history;
     }

@@ -20,9 +20,8 @@ public class StatsHandling : IHTTPEndpoint {
                     unit.Commit();
                     return;
                 }
-                var stats = unit.UserRepository.GetStats(username);
-                var body = JsonSerializer.Serialize(stats);
-                rs.Prepare(HttpStatusCode.OK, body, MediaTypeNames.Application.Json);
+                var stats = unit.UserRepository.GetStats(username).Beautify();
+                rs.Prepare(HttpStatusCode.OK, stats, MediaTypeNames.Application.Json);
                 unit.Commit();
             }
             catch (ProcessException e) {

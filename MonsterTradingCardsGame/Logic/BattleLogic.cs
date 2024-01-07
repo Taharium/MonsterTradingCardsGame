@@ -39,7 +39,7 @@ public static class BattleLogic {
         }
 
         if (player1.DeckCount() == 0) {
-            _battleLog.Append($"Player2 ({player2.Username}) wins the Game in {_round} rounds: Player1 ({player1.Username}) has no cards left\n\n");
+            _battleLog.Append($"Player2 ({player2.Username}) wins the Game in {_round} rounds: Player1 ({player1.Username}) has no cards left\n");
             player2.Won = true;
             var battleLog = _battleLog.ToString();
             ResetBattle();
@@ -51,7 +51,7 @@ public static class BattleLogic {
         }
         
         if (player2.DeckCount() == 0) {
-            _battleLog.Append($"Player1 ({player1.Username}) wins the Game in {_round} rounds: Player2 ({player2.Username}) has no cards left\n\n");
+            _battleLog.Append($"Player1 ({player1.Username}) wins the Game in {_round} rounds: Player2 ({player2.Username}) has no cards left\n");
             player1.Won = true;
             var battleLog = _battleLog.ToString();
             ResetBattle();
@@ -63,7 +63,7 @@ public static class BattleLogic {
         }
         
         if(_round == 100) {
-            _battleLog.Append("Draw: 100 rounds have passed\n\n");
+            _battleLog.Append("Draw: 100 rounds have passed\n");
             var battleLog = _battleLog.ToString();
             ResetBattle();
             return new ResultDTO() {

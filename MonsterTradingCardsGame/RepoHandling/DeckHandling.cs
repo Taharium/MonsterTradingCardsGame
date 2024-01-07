@@ -22,7 +22,7 @@ public class DeckHandling : IHTTPEndpoint {
                     unit.Commit();
                     return;
                 }
-                var body = JsonSerializer.Serialize(deck.Cards) ?? throw new ProcessException(HttpStatusCode.InternalServerError, "");
+                var body = deck.Beautify();
                 rs.Prepare(HttpStatusCode.OK, body, MediaTypeNames.Application.Json);
                 unit.Commit();
             }

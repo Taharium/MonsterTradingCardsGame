@@ -21,7 +21,7 @@ public class TradingHandling : IHTTPEndpoint{
                     unit.Commit();
                     return;
                 }
-                var body = JsonSerializer.Serialize(tradingDeals) ?? throw new ProcessException(HttpStatusCode.InternalServerError, "");
+                var body = tradingDeals.Beautify();
                 rs.Prepare(HttpStatusCode.OK, body, MediaTypeNames.Application.Json);
                 unit.Commit();
             }

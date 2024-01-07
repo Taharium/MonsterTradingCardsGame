@@ -21,7 +21,7 @@ public class TransactionHandling : IHTTPEndpoint {
                 unit.PackageRepository.UpdatePackage(package.PackageId, username);
                 unit.UserRepository.UpdateCoinsLost(username);
                 unit.StackRepository.InsertIntoStack(username, package.Package);
-                var body = JsonSerializer.Serialize(package);
+                var body = package.Beautify();
                 rs.Prepare(HttpStatusCode.OK, body, MediaTypeNames.Application.Json);
                 unit.Commit();
             }

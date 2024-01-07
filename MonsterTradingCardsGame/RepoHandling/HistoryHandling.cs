@@ -13,14 +13,20 @@ public class HistoryHandling : IHTTPEndpoint {
             try {
                 var username = AuthToken.ParseTokenForUsername(rq.Headers["Authorization"]);
                 unit.SessionRepository.CheckToken(username);
-                if(rq.QueryParameters.ContainsKey("detailed") && rq.QueryParameters["detailed"] == "true") {
-                    var historyDetailed = unit.TradingRepository.GetTradingHistoryDetailed(username);
-                    rs.Prepare(HttpStatusCode.OK, historyDetailed.ToCustomString(), MediaTypeNames.Text.Plain);
+                if(rq.QueryParameters.ContainsKey("detailed") && rq.QueryParameters["detailed"] == "true" && rq.QueryParameters.ContainsKey("format") && rq.QueryParameters["format"] == "plain") {
+                    var historyDetailed = unit.TradingRepository.GetTradingHistoryDetailed(username).ToCustomString();
+                    rs.Prepare(HttpStatusCode.OK, historyDetailed, MediaTypeNames.Text.Plain);
                     unit.Commit();
                     return;
                 }
-                var history = unit.TradingRepository.GetTradingHistory(username);
-                rs.Prepare(HttpStatusCode.OK, history.ToCustomString(), "text/plain");
+                if(rq.QueryParameters.ContainsKey("detailed") && rq.QueryParameters["detailed"] == "true") {
+                    var historyDetailed = unit.TradingRepository.GetTradingHistoryDetailed(username).Beautify();
+                    rs.Prepare(HttpStatusCode.OK, historyDetailed, MediaTypeNames.Text.Plain);
+                    unit.Commit();
+                    return;
+                }
+                var history = unit.TradingRepository.GetTradingHistory(username).Beautify();
+                rs.Prepare(HttpStatusCode.OK, history, MediaTypeNames.Application.Json);
                 unit.Commit();
             }
             catch (ProcessException e) {
@@ -36,8 +42,8 @@ public class HistoryHandling : IHTTPEndpoint {
             try {
                 var username = AuthToken.ParseTokenForUsername(rq.Headers["Authorization"]);
                 unit.SessionRepository.CheckToken(username);
-                var history = unit.BattleRepository.GetBattleHistory(username);
-                rs.Prepare(HttpStatusCode.OK, history.ToCustomString(), MediaTypeNames.Text.Plain);
+                var history = unit.BattleRepository.GetBattleHistory(username).Beautify();
+                rs.Prepare(HttpStatusCode.OK, history, MediaTypeNames.Application.Json);
                 unit.Commit();
             }
             catch (ProcessException e) {

@@ -41,6 +41,10 @@ Wenn ich eine Liste von Daten in PlainText zurückgebe, dann muss ich die Daten 
 Deshalb habe ich mich entschieden eine ListExtension zu implementieren, um die Daten in eine Liste von Strings
 umzuwandeln. 
 
+### JsonExtension
+Die JsonExtension habe ich implementiert, da ich die Daten in Json umwandeln muss. Da die Daten jedoch nicht im Terminal
+beautified werden, habe ich es durch die JsonExtension gemacht.
+
 ### DTO
 Ich habe bemerkt, dass ich beim JsonSerialisieren der Models zu viel Information zurückgebe, die der Client nicht 
 unbedingt braucht. Aus diesem Grind habe ich mich entschieden Data Transfer Objects zu implementieren. Die DTO's sind 
@@ -104,21 +108,28 @@ Ich habe eine lose/win ratio hinzugefügt, um zu sehen wie gut der User ist bzw.
 ratio wird als float in Prozent zurückgegeben.
 
 ### Trade History
-Ich habe eine TradeHistory hinzugefügt, um zu sehen welche Karten der User getradet hat. Die Response ist in PlainText
+Ich habe eine TradeHistory hinzugefügt, um zu sehen welche Karten der User getradet hat. Die Response ist in Json
 und man kann sehen welche cardid der User, sichtbar ist nur die UserId, getradet hat und welche er dafür bekommen hat.
 Will man eine detailierte History dann fügt man einfach ?detailed=true hinzu. Dann kann man die Usernamen sehen 
-und die details der Karten sowie die Requirements.
+und die details der Karten sowie die Requirements. Fügt man jedoch &format=plain hinzu, dann wird die Response in 
+PlainText zurückgegeben.
 
 ## Mandatory Unique Features
 
 ### Battle History
 Ich habe mich entschieden eine BattleHistory als Unique Feature zu implementieren. Dadurch, dass ich ebenfalls eine
 TradeHistory habe, habe ich eine HistoryHandling Klasse erstellt, die die beiden Historys verwaltet. Die BattleHistory
-gibt eine Liste von Battle in der der User mitgespielt hat. Die Response wird als PlainText zurückgegeben. Man kann
-sehen, ob der User gewonnen oder verloren hat und man kann den BattleLog ebenfalls sehen. Daurch kann der User sehen,
-wie er verloren bzw. gewonnen hat.
+gibt eine Liste von Battle in der der User mitgespielt hat. Die Response wird als Json zurückgegeben. Man kann
+sehen, ob der User gewonnen oder verloren hat und man kann die letzte zeile des BattleLog ebenfalls sehen. Dadurch kann 
+der User sehen, in wie vielen Runden er gewonnen oder verloren hat.
 
+Example:
+```
 [
-    kienboec won against altenhof,
-    battlelog
+  {
+    "Fight": "altenhof vs. kienboec",
+    "Result": "altenhof won",
+    "BattleLogShort": "Player1 (altenhof) wins the Game in 35 rounds: Player2 (kienboec) has no cards left"
+  }
 ]
+```

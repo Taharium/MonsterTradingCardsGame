@@ -4,13 +4,13 @@ public class TradingHistoryDetailedDTO {
     public string Id { get; set; } = "";
     public string Offerer { get; set; } = "";
     public string CardToTrade { get; set; } = "";
-    public string Type { get; set; } = "";
-    public float MinimumDamage { get; set; }
-    public string CardToReceive { get; set; } = "";
-    public string Trader { get; set; } = "";
     public string OffererCardName { get; set; } = "";
     public string OffererCardType { get; set; } = "";
     public float OffererCardDamage { get; set; }
+    public string Type { get; set; } = "";
+    public float MinimumDamage { get; set; }
+    public string Trader { get; set; } = "";
+    public string CardToReceive { get; set; } = "";
     public string TraderCardName { get; set; } = "";
     public string TraderCardType { get; set; } = "";
     public float TraderCardDamage { get; set; }

@@ -6,17 +6,21 @@ using MonsterTradingCardsGame.Extensions;
 namespace MonsterTradingCardsGame.Models;
 
 public class Card {
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    public CardElementType ElementType { get; private set; }
-    public float Damage { get; set; }
     public string Id { get; set; } = "";
-        
+
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public CardName Name { get; set; }
+
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public CardElementType ElementType { get; private set; }
+
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public CardSpecies Species { get; private set; }
+
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public CardType Type { get; private set; }
+
+    public float Damage { get; set; }
 
     public Card(string id, string name, float damage) {
         Id = id;

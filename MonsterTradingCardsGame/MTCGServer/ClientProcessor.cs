@@ -28,7 +28,7 @@ public class ClientProcessor {
             Send(rs, writer);
             return;
         }
-            
+
         var endpoint = _httpServer.Endpoints.ContainsKey(rq.Path[0]) ? _httpServer.Endpoints[rq.Path[0]] : null;
             
         if (endpoint == null) {
