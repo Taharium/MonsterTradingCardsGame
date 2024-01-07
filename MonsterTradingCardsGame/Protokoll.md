@@ -80,7 +80,7 @@ doch nach Beginn des Servers habe ich wieder nachgelassen. Mit Beginn der zweite
 Zeit gehabt. Battle und Trade haben etwas gebraucht, weshalb ich sie in den Ferien gemacht habe. 
 
 ## Git link
-https://github.com/Taharium/MonsterTradingCardsGame3.git
+https://github.com/Taharium/MonsterTradingCardsGame4.git
 
 ## Änderungen
 
