@@ -105,7 +105,7 @@ GroundSpell, IceGoblin, GroundGoblin, IceTroll, GroundTroll, IceElf und GroundEl
 
 ### lose/win ratio
 Ich habe eine lose/win ratio hinzugefügt, um zu sehen wie gut der User ist bzw. wie oft er gewonnen hat. Die lose/win 
-ratio wird als float in Prozent zurückgegeben.
+ratio wird als float in Prozent zurückgegeben in Plaintext.
 
 ### Trade History
 Ich habe eine TradeHistory hinzugefügt, um zu sehen welche Karten der User getradet hat. Die Response ist in Json
@@ -113,6 +113,55 @@ und man kann sehen welche cardid der User, sichtbar ist nur die UserId, getradet
 Will man eine detailierte History dann fügt man einfach ?detailed=true hinzu. Dann kann man die Usernamen sehen 
 und die details der Karten sowie die Requirements. Fügt man jedoch &format=plain hinzu, dann wird die Response in 
 PlainText zurückgegeben.
+
+#### Einfache Trading History
+```
+[
+  {
+    "Id": "6cd85277-4590-49d4-b0cf-ba0a921faad0",
+    "Offerer": 1,
+    "CardToTrade": "1cb6ab86-bdb2-47e5-b6e4-68c5ab389334",
+    "Type": "monster",
+    "MinimumDamage": 15,
+    "Trader": 2,
+    "CardToReceive": "951e886a-0fbf-425d-8df5-af2ee4830d85"
+  }
+]
+```
+
+#### detailierte Trading History
+
+```
+[
+  {
+    "Id": "6cd85277-4590-49d4-b0cf-ba0a921faad0",
+    "Offerer": "kienboec",
+    "CardToTrade": "1cb6ab86-bdb2-47e5-b6e4-68c5ab389334",
+    "OffererCardName": "Ork",
+    "OffererCardType": "Monster",
+    "OffererCardDamage": 55,
+    "Type": "monster",
+    "MinimumDamage": 15,
+    "Trader": "altenhof",
+    "CardToReceive": "1cb6ab86-bdb2-47e5-b6e4-68c5ab389334",
+    "TraderCardName": "Ork",
+    "TraderCardType": "Monster",
+    "TraderCardDamage": 45
+  }
+]
+```
+
+#### detailierte Trading History in Plaintext
+
+```
+[
+        TradingId: 6cd85277-4590-49d4-b0cf-ba0a921faad0; Type: monster; MinimumDamage: 15;
+                Offerer: kienboec; CardToTrade: 1cb6ab86-bdb2-47e5-b6e4-68c5ab389334 =>
+                (OffererCardName: Ork, OffererCardType: Monster, OffererCardDamage: 55);
+                Trader: altenhof; CardToReceive: 1cb6ab86-bdb2-47e5-b6e4-68c5ab389334 =>
+                (TraderCardName: Ork, TraderCardType: Monster, TraderCardDamage: 45),
+]
+```
 
 ## Mandatory Unique Features
 
@@ -123,7 +172,7 @@ gibt eine Liste von Battle in der der User mitgespielt hat. Die Response wird al
 sehen, ob der User gewonnen oder verloren hat und man kann die letzte zeile des BattleLog ebenfalls sehen. Dadurch kann 
 der User sehen, in wie vielen Runden er gewonnen oder verloren hat.
 
-Example:
+#### Battle History
 ```
 [
   {
