@@ -1,0 +1,4 @@
+docker build -f MonsterTradingCardsGame/Dockerfile -t mctg .
+
+docker tag mctg taharium/myrepo:mctg
+docker push taharium/myrepo:mctg
