@@ -29,7 +29,7 @@ public class ListExtensionTest {
         };   
         
         string expected = "[\n" +
-                          "\tTradingId: 1; Offerer: 123; CardToTrade: Card1;\n\t\tType: Monster; MinimumDamage: 50,5; Trader: 456; CardToReceive: Card2,\n" +
+                          "\tTradingId: 1; Offerer: 123; CardToTrade: Card1;\n\t\tType: Monster; MinimumDamage: 50.5; Trader: 456; CardToReceive: Card2,\n" +
                           "\tTradingId: 2; Offerer: 789; CardToTrade: Card3;\n\t\tType: Monster; MinimumDamage: 30; Trader: 987; CardToReceive: Card4,\n" +
                           "]";
         
@@ -74,7 +74,7 @@ public class ListExtensionTest {
         
         
         string expected = "[\n" +
-                          "\tTradingId: 1; Type: Monster; MinimumDamage: 50,5;\n\t\tOfferer: User1; CardToTrade: Card1 => \n\t\t(OffererCardName: Card1, OffererCardType: Monster, OffererCardDamage: 50,5);\n\t\tTrader: User2; CardToReceive: Card2 => \n\t\t(TraderCardName: Card2, TraderCardType: Monster, TraderCardDamage: 50,5),\n" +
+                          "\tTradingId: 1; Type: Monster; MinimumDamage: 50.5;\n\t\tOfferer: User1; CardToTrade: Card1 => \n\t\t(OffererCardName: Card1, OffererCardType: Monster, OffererCardDamage: 50.5);\n\t\tTrader: User2; CardToReceive: Card2 => \n\t\t(TraderCardName: Card2, TraderCardType: Monster, TraderCardDamage: 50.5),\n" +
                           "\tTradingId: 2; Type: Monster; MinimumDamage: 30;\n\t\tOfferer: User3; CardToTrade: Card3 => \n\t\t(OffererCardName: Card3, OffererCardType: Monster, OffererCardDamage: 30);\n\t\tTrader: User4; CardToReceive: Card4 => \n\t\t(TraderCardName: Card4, TraderCardType: Monster, TraderCardDamage: 30),\n" +
                           "]";
         
