@@ -84,9 +84,13 @@ public class HTTPResponseTest {
 
         stream.Seek(0, SeekOrigin.Begin);
         var reader = new StreamReader(stream);
-        var result = reader.ReadToEnd().Replace("\r","");
+        var result = reader.ReadToEnd();
 
-        string expectedOutput = "HTTP/1.1 200 OK\r\nContent-Length: 19\r\nContent-Type: application/json\r\n\r\n{'testing': 'test'}\r\n".Replace("\r","");
+        string expectedOutput = "HTTP/1.1 200 OK\r\n" +
+                                "Content-Length: 19\r\n" +
+                                "Content-Type: application/json\r\n" +
+                                "\r\n" +
+                                "{'testing': 'test'}\r\n";
 
         Assert.That(expectedOutput, Is.EqualTo(result));
     }
@@ -101,9 +105,11 @@ public class HTTPResponseTest {
         rs.SendResponse();
         stream.Seek(0, SeekOrigin.Begin);
         var reader = new StreamReader(stream);
-        var result = reader.ReadToEnd().Replace("\r","");
+        var result = reader.ReadToEnd();
 
-        string expectedOutput = "HTTP/1.1 204 NoContent\r\nContent-Length: 0\r\n\r\n".Replace("\r","");
+        string expectedOutput = "HTTP/1.1 204 NoContent\r\n" +
+                                "Content-Length: 0\r\n" +
+                                "\r\n";
 
         Assert.That(expectedOutput, Is.EqualTo(result));
     }

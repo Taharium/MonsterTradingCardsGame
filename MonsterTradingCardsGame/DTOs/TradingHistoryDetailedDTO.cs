@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace MonsterTradingCardsGame.DTOs;
+﻿namespace MonsterTradingCardsGame.DTOs;
 
 public class TradingHistoryDetailedDTO {
     public string Id { get; set; } = "";
@@ -18,6 +16,20 @@ public class TradingHistoryDetailedDTO {
     public float TraderCardDamage { get; set; }
 
     public override string ToString() {
-        return $"TradingId: {Id}; Type: {Type}; MinimumDamage: {MinimumDamage.ToString(CultureInfo.InvariantCulture)};\n\t\tOfferer: {Offerer}; CardToTrade: {CardToTrade} => \n\t\t(OffererCardName: {OffererCardName}, OffererCardType: {OffererCardType}, OffererCardDamage: {OffererCardDamage.ToString(CultureInfo.InvariantCulture)});\n\t\tTrader: {Trader}; CardToReceive: {CardToReceive} => \n\t\t(TraderCardName: {TraderCardName}, TraderCardType: {TraderCardType}, TraderCardDamage: {TraderCardDamage.ToString(CultureInfo.InvariantCulture)}),";
+        
+        return $"TradingId: {Id}; Type: {Type}; MinimumDamage: {MinimumDamage};\n\t\tOfferer: {Offerer}; CardToTrade: {CardToTrade} => \n\t\t(OffererCardName: {OffererCardName}, OffererCardType: {OffererCardType}, OffererCardDamage: {OffererCardDamage});\n\t\tTrader: {Trader}; CardToReceive: {CardToReceive} => \n\t\t(TraderCardName: {TraderCardName}, TraderCardType: {TraderCardType}, TraderCardDamage: {TraderCardDamage}),";
+        /*return $"TradingId: {Id}\n" +
+               $"Offerer: {Offerer}\n" +
+               $"CardToTrade: {CardToTrade}\t" +
+               $"(OffererCardName: {OffererCardName}, " +
+               $"OffererCardType: {OffererCardType}, " +
+               $"OffererCardDamage: {OffererCardDamage})\n" +
+               $"Type: {Type}\n" +
+               $"MinimumDamage: {MinimumDamage}\n" +
+               $"Trader: {Trader}\n" +
+               $"CardToReceive: {CardToReceive}\t" +
+               $"(TraderCardName: {TraderCardName}, " +
+               $"TraderCardType: {TraderCardType}, " +
+               $"TraderCardDamage: {TraderCardDamage})\n";*/
     }
 }

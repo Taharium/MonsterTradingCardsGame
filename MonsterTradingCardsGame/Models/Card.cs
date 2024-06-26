@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using MonsterTradingCardsGame.DTOs;
 using MonsterTradingCardsGame.Enums;
 using MonsterTradingCardsGame.Extensions;
@@ -45,6 +44,6 @@ public class Card {
     }
         
     public string ToCustomString() {
-        return $"Id: {Id}, Name: {Name.ToString()}, Damage: {Damage.ToString(CultureInfo.InvariantCulture)}, Type: {Type.ToString()}, Species: {Species.ToString()}, Element: {ElementType.ToString()}";
+        return $"Id: {Id}, Name: {Name.ToString()}, Damage: {Damage}, Type: {Type.ToString()}, Species: {Species.ToString()}, Element: {ElementType.ToString()}";
     }
 }
