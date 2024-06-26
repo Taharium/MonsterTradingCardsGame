@@ -1,4 +1,6 @@
-﻿namespace MonsterTradingCardsGame.DTOs;
+﻿using System.Globalization;
+
+namespace MonsterTradingCardsGame.DTOs;
 
 public class TradingHistoryDTO {
     public string Id { get; set; } = "";
@@ -10,6 +12,6 @@ public class TradingHistoryDTO {
     public string CardToReceive { get; set; } = "";
 
     public override string ToString() {
-        return $"TradingId: {Id}; Offerer: {Offerer}; CardToTrade: {CardToTrade};\n\t\tType: {Type}; MinimumDamage: {MinimumDamage}; Trader: {Trader}; CardToReceive: {CardToReceive},";
+        return $"TradingId: {Id}; Offerer: {Offerer}; CardToTrade: {CardToTrade};\n\t\tType: {Type}; MinimumDamage: {MinimumDamage.ToString(CultureInfo.InvariantCulture)}; Trader: {Trader}; CardToReceive: {CardToReceive},";
     }
 }
